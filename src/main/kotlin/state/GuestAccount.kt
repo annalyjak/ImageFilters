@@ -1,4 +1,6 @@
-class GuestUserState : UserState {
+package state
+
+object GuestAccount : AccountState {
     override fun canRemoveWatermark(): Boolean {
         return false
     }

@@ -1,4 +1,6 @@
-class LoggedInUserState : UserState {
+package state
+
+object LoggedInAccount : AccountState {
     override fun canRemoveWatermark(): Boolean {
         return true
     }
