@@ -1,22 +1,24 @@
+package domain
+
+import state.AccountState
+
 class Image(val imageName: String) {
     private var watermark: String = "-"
 
     fun displayImage() {
-        println("Displaying image: $imageName. " + "Watermark: $watermark" )
+        println("Displaying image: $imageName. " + "Watermark: $watermark")
     }
 
-    fun setWatermark(watermark: String){
+    fun setWatermark(watermark: String) {
         this.watermark = watermark
     }
 
-    fun removeWatermark(userState: UserState) {
-        if (userState.canRemoveWatermark()) {
+    fun removeWatermark(accountState: AccountState) {
+        if (accountState.canRemoveWatermark()) {
             this.watermark = "-"
             println("Watermark removed. ")
-        }
-        else {
+        } else {
             println("You have no permission to remove Watermark. Please change user state")
         }
-
     }
 }

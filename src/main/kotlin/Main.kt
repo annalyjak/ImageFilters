@@ -1,4 +1,9 @@
-import java.awt.image.ImageFilter
+import decorator.BlurDecorator
+import decorator.SepiaDecorator
+import domain.Image
+import domain.User
+import filters.BasicImageFilter
+import state.LoggedInAccount
 
 fun main(args: Array<String>) {
 
@@ -54,7 +59,7 @@ fun main(args: Array<String>) {
     image4.displayImage()
     println("---")
 
-    user2.setUserState(LoggedInUserState())
+    user2.setUserState(LoggedInAccount)
     image4.removeWatermark(user2.getUserState())
     image4.displayImage()
 

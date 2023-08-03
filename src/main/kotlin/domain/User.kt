@@ -1,28 +1,31 @@
+package domain
+
+import state.GuestAccount
+import state.AccountState
 
 // Creational: Builder for creating user.
-// User class also works as a UserState Context
+// domain.User class also works as a state.UserState Context
 
 class User private constructor(
     private val username: String,
     private val password: String,
     private val email: String,
     private val phone: String,
-    private var state: UserState = GuestUserState()) : UserState{
+    private var state: AccountState = GuestAccount // there is no need to keep implementation and the state as a separate element
+) {
+    // the best way was to do not keep state of account here - you could moved it to separate class - sth like repository and call it only when it is required - do not keep thinks "not related" in one class - try to think in "contexts"
 
     fun getAccountDetails() = println(
         "Username: $username\n" +
-        "Email: $email\n" +
-        "Phone: $phone")
+                "Email: $email\n" +
+                "Phone: $phone"
+    )
 
-    override fun canRemoveWatermark(): Boolean {
-        return this.state.canRemoveWatermark()
-    }
-
-    fun setUserState(state: UserState){
+    fun setUserState(state: AccountState) {
         this.state = state
     }
 
-    fun getUserState() : UserState{
+    fun getUserState(): AccountState {
         return this.state
     }
 
